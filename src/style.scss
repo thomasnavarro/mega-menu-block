@@ -1,4 +1,4 @@
-// Styles for both the Editor and the front end.
+/* Ensure sufficient color contrast for text and interactive elements */
 .wp-block-outermost-mega-menu {
     .wp-block-outermost-mega-menu__toggle {
         background-color: initial;
@@ -49,4 +49,13 @@
             }
         }
     }  
+}
+
+/* Add responsive design styles for the mega menu */
+@media (max-width: 768px) {
+    .wp-block-outermost-mega-menu__menu-container {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
 }

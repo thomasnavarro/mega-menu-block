@@ -1,4 +1,4 @@
-// Front-end specific styles.
+/* Ensure sufficient color contrast for text and interactive elements */
 .wp-block-outermost-mega-menu__menu-container {
     height: auto;
     left: -1px;
@@ -135,5 +135,14 @@ html.has-modal-open {
                 display: none;
             }
         }
+    }
+}
+
+/* Add responsive design styles for the mega menu */
+@media (max-width: 768px) {
+    .wp-block-outermost-mega-menu__menu-container {
+        width: 100%;
+        left: 0;
+        right: 0;
     }
 }

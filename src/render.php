@@ -50,27 +50,34 @@ $toggle_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" widt
 		class="wp-block-outermost-mega-menu__toggle"
 		data-wp-on--click="actions.toggleMenuOnClick"
 		data-wp-bind--aria-expanded="state.isMenuOpen"
+		aria-haspopup="true"
+		aria-controls="mega-menu"
+		aria-label="<?php echo __( 'Toggle mega menu', 'mega-menu' ); ?>"
 	>
 		<?php echo $label; ?><span class="wp-block-outermost-mega-menu__toggle-icon"><?php echo $toggle_icon; ?></span>
 	</button>
 
-	<div
-		class="<?php echo $menu_classes; ?>"
-		tabindex="-1"
-	>
-		<?php echo block_template_part( $menu_slug ); ?>
-		<button 
-			aria-label="<?php echo __( 'Close menu', 'mega-menu' ); ?>" 
-			class="menu-container__close-button" 
-			data-wp-on--click="actions.closeMenuOnClick"
-			type="button" 
+	<nav>
+		<div
+			class="<?php echo $menu_classes; ?>"
+			tabindex="-1"
+			role="menu"
+			id="mega-menu"
 		>
-			<?php echo $close_icon; ?>
-		</button>
-	</div>
+			<?php echo block_template_part( $menu_slug ); ?>
+			<button 
+				aria-label="<?php echo __( 'Close menu', 'mega-menu' ); ?>" 
+				class="menu-container__close-button" 
+				data-wp-on--click="actions.closeMenuOnClick"
+				type="button" 
+			>
+				<?php echo $close_icon; ?>
+			</button>
+		</div>
+	</nav>
 
 	<?php if ( $disable_when_collapsed && $collapsed_url ) { ?>
-		<a class="wp-block-outermost-mega-menu__collapsed-link" href="<?php echo $collapsed_url; ?>">
+		<a class="wp-block-outermost-mega-menu__collapsed-link" href="<?php echo $collapsed_url; ?>" role="menuitem">
 			<span class="wp-block-navigation-item__label"><?php echo $label; ?></span>
 		</a>
 	<?php } ?>

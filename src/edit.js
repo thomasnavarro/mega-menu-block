@@ -346,7 +346,12 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<button className="wp-block-navigation-item__content wp-block-outermost-mega-menu__toggle">
+				<button 
+					className="wp-block-navigation-item__content wp-block-outermost-mega-menu__toggle"
+					aria-haspopup="true"
+					aria-controls="mega-menu"
+					aria-label={ __( 'Toggle mega menu', 'mega-menu' ) }
+				>
 					<RichText
 						identifier="label"
 						className="wp-block-navigation-item__label"
