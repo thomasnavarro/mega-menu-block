@@ -346,7 +346,11 @@ export default function Edit( { attributes, setAttributes } ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<button className="wp-block-navigation-item__content wp-block-outermost-mega-menu__toggle">
+				<button
+					className="wp-block-navigation-item__content wp-block-outermost-mega-menu__toggle"
+					aria-expanded="false"
+					aria-controls="menu-container"
+				>
 					<RichText
 						identifier="label"
 						className="wp-block-navigation-item__label"
@@ -390,6 +394,15 @@ export default function Edit( { attributes, setAttributes } ) {
 						</span>
 					) }
 				</button>
+				<div
+					id="menu-container"
+					className="wp-block-outermost-mega-menu__menu-container"
+					role="region"
+					aria-hidden="true"
+					tabindex="-1"
+				>
+					{/* Menu content goes here */}
+				</div>
 			</div>
 		</>
 	);

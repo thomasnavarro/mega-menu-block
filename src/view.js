@@ -29,6 +29,7 @@ const { state, actions } = store( 'outermost/mega-menu', {
 			} else {
 				context.previousFocus = ref;
 				actions.openMenu( 'click' );
+				ref.setAttribute( 'aria-expanded', 'true' ); // Update aria-expanded
 			}
 		},
 		closeMenuOnClick() {
@@ -82,6 +83,8 @@ const { state, actions } = store( 'outermost/mega-menu', {
 				}
 				context.previousFocus = null;
 				context.megaMenu = null;
+				const { ref } = getElement();
+				ref.setAttribute( 'aria-expanded', 'false' ); // Update aria-expanded
 			}
 		},
 	},
@@ -93,6 +96,7 @@ const { state, actions } = store( 'outermost/mega-menu', {
 			// Set the menu reference when initialized.
 			if ( state.isMenuOpen ) {
 				context.megaMenu = ref;
+				ref.setAttribute( 'aria-controls', 'menu-container' ); // Add aria-controls
 			}
 		},
 	},
