@@ -23,9 +23,8 @@ const { state, actions } = store( 'outermost/mega-menu', {
 			// Safari won't send focus to the clicked element, so we need to manually place it: https://bugs.webkit.org/show_bug.cgi?id=22261
 			if ( window.document.activeElement !== ref ) ref.focus();
 
-			if ( state.menuOpenedBy.click || state.menuOpenedBy.focus ) {
+			if ( state.menuOpenedBy.click ) {
 				actions.closeMenu( 'click' );
-				actions.closeMenu( 'focus' );
 			} else {
 				context.previousFocus = ref;
 				actions.openMenu( 'click' );
@@ -33,21 +32,19 @@ const { state, actions } = store( 'outermost/mega-menu', {
 		},
 		closeMenuOnClick() {
 			actions.closeMenu( 'click' );
-			actions.closeMenu( 'focus' );
 		},
 		handleMenuKeydown( event ) {
 			if ( state.menuOpenedBy.click ) {
 				// If Escape close the menu.
 				if ( event?.key === 'Escape' ) {
 					actions.closeMenu( 'click' );
-					actions.closeMenu( 'focus' );
 				}
 			}
 		},
 		handleMenuFocusout( event ) {
 			const context = getContext();
 			const menuContainer = context.megaMenu?.querySelector(
-				'.wp-block-outermost-mega-menu__menu-container'
+					'.wp-block-outermost-mega-menu__menu-container'
 			);
 			// If focus is outside menu, and in the document, close menu
 			// event.target === The element losing focus
@@ -63,7 +60,6 @@ const { state, actions } = store( 'outermost/mega-menu', {
 					event.target !== window.document.activeElement )
 			) {
 				actions.closeMenu( 'click' );
-				actions.closeMenu( 'focus' );
 			}
 		},
 		openMenu( menuOpenedOn = 'click' ) {
@@ -90,9 +86,8 @@ const { state, actions } = store( 'outermost/mega-menu', {
 			// Safari won't send focus to the hovered element, so we need to manually place it: https://bugs.webkit.org/show_bug.cgi?id=22261
 			if ( window.document.activeElement !== ref ) ref.focus();
 
-			if ( state.menuOpenedBy.hover || state.menuOpenedBy.focus ) {
+			if ( state.menuOpenedBy.hover ) {
 				actions.closeMenu( 'hover' );
-				actions.closeMenu( 'focus' );
 			} else {
 				context.previousFocus = ref;
 				actions.openMenu( 'hover' );
@@ -100,7 +95,6 @@ const { state, actions } = store( 'outermost/mega-menu', {
 		},
 		closeMenuOnHover() {
 			actions.closeMenu( 'hover' );
-			actions.closeMenu( 'focus' );
 		},
 	},
 	callbacks: {
