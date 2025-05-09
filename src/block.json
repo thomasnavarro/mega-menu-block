@@ -32,6 +32,10 @@
 		},
 		"width": {
 			"type": "string"
+		 },
+		"openOnHover": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {

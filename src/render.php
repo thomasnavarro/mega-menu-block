@@ -16,6 +16,7 @@ $menu_slug              = esc_attr( $attributes['menuSlug'] ?? '');
 $collapsed_url          = esc_url( $attributes['collapsedUrl'] ?? '');
 $justify_menu           = esc_attr( $attributes['justifyMenu'] ?? '');
 $menu_width             = esc_attr( $attributes['width'] ?? 'content');
+$open_on_hover          = $attributes['openOnHover'] ?? false;
 
 // Don't display the mega menu link if there is no label or no menu slug.
 if ( ! $label || ! $menu_slug ) {
@@ -48,7 +49,11 @@ $toggle_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" widt
 >
 	<button
 		class="wp-block-outermost-mega-menu__toggle"
-		data-wp-on--mouseover="actions.toggleMenuOnClick"
+		<?php if ( $open_on_hover ) { ?>
+			data-wp-on--mouseover="actions.toggleMenuOnHover"
+		<?php } else { ?>
+			data-wp-on--click="actions.toggleMenuOnClick"
+		<?php } ?>
 		data-wp-bind--aria-expanded="state.isMenuOpen"
 	>
 		<?php echo $label; ?><span class="wp-block-outermost-mega-menu__toggle-icon"><?php echo $toggle_icon; ?></span>

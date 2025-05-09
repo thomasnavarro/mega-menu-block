@@ -57,6 +57,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		collapsedUrl,
 		justifyMenu,
 		width,
+		openOnHover,
 	} = attributes;
 
 	// Get the Url for the template part screen in the Site Editor.
@@ -287,6 +288,19 @@ export default function Edit( { attributes, setAttributes } ) {
 							autoComplete="off"
 						/>
 					) }
+					<ToggleControl
+						label={ __( 'Open on Hover', 'mega-menu-block' ) }
+						checked={ openOnHover }
+						onChange={ () => {
+							setAttributes( {
+								openOnHover: ! openOnHover,
+							} );
+						} }
+						help={ __(
+							'Enable this option to open the mega menu on hover instead of click.',
+							'mega-menu-block'
+						) }
+					/>
 				</PanelBody>
 				<PanelBody
 					className="outermost-mega-menu__layout-panel"
