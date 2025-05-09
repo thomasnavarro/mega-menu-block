@@ -84,6 +84,24 @@ const { state, actions } = store( 'outermost/mega-menu', {
 				context.megaMenu = null;
 			}
 		},
+		toggleMenuOnHover() {
+			const context = getContext();
+			const { ref } = getElement();
+			// Safari won't send focus to the hovered element, so we need to manually place it: https://bugs.webkit.org/show_bug.cgi?id=22261
+			if ( window.document.activeElement !== ref ) ref.focus();
+
+			if ( state.menuOpenedBy.hover || state.menuOpenedBy.focus ) {
+				actions.closeMenu( 'hover' );
+				actions.closeMenu( 'focus' );
+			} else {
+				context.previousFocus = ref;
+				actions.openMenu( 'hover' );
+			}
+		},
+		closeMenuOnHover() {
+			actions.closeMenu( 'hover' );
+			actions.closeMenu( 'focus' );
+		},
 	},
 	callbacks: {
 		initMenu() {

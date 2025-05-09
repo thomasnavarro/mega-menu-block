@@ -1,4 +1,4 @@
-// Front-end specific styles.
+/* Front-end specific styles. */
 .wp-block-outermost-mega-menu__menu-container {
     height: auto;
     left: -1px;
@@ -60,6 +60,13 @@
     // This ensures navigation menu inside of mega menus display correctly.
     .is-responsive {
         display: flex;
+    }
+
+    // Display the menu on hover
+    &:hover {
+        opacity: 1;
+        overflow: visible;
+        visibility: visible;
     }
 }
 

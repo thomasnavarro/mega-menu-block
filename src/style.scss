@@ -1,4 +1,3 @@
-// Styles for both the Editor and the front end.
 .wp-block-outermost-mega-menu {
     .wp-block-outermost-mega-menu__toggle {
         background-color: initial;
@@ -37,6 +36,20 @@
 
         &[aria-expanded=true] {
             .wp-block-outermost-mega-menu__toggle-icon {    
+                svg {
+                    transform: rotate(0deg);
+                }
+            }
+
+            &~.wp-block-outermost-mega-menu__menu-container {
+                opacity: 1;
+                overflow: visible;
+                visibility: visible;
+            }
+        }
+
+        &:hover {
+            .wp-block-outermost-mega-menu__toggle-icon {
                 svg {
                     transform: rotate(0deg);
                 }

@@ -48,7 +48,7 @@ $toggle_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" widt
 >
 	<button
 		class="wp-block-outermost-mega-menu__toggle"
-		data-wp-on--click="actions.toggleMenuOnClick"
+		data-wp-on--mouseover="actions.toggleMenuOnClick"
 		data-wp-bind--aria-expanded="state.isMenuOpen"
 	>
 		<?php echo $label; ?><span class="wp-block-outermost-mega-menu__toggle-icon"><?php echo $toggle_icon; ?></span>
